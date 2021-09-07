@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Display Contacts on click Of Button" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <p class="slds-m-bottom_small">
+                <lightning-button label="Get Contacts" onclick={handleGetContacts}></lightning-button>
+            </p>
+           <template if:true={contacts}>
+           <template for:each={contacts} for:item=cont>
+                <h4 key={cont.Id}>{cont.AccountId}</h4>
+                <h4 key={cont.FirstName}>{cont.FirstName}</h4>
+                <h4 key={cont.LastName}>{cont.LastName}</h4>
+                <h4 key={cont.Email}>{cont.Email}</h4>             
+           </template>
+           </template>
+           <template if:true={error}>
+            {errorMsg}
+        </template>
+        </div>
+    </lightning-card>
+</template>

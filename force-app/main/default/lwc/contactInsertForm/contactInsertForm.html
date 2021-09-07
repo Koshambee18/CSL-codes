@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-box slds-theme_shade">
+<lightning-card title="Contact Form">
+    <div class="slds-var-m-around_medium slds-p-top_medium ">
+    <lightning-input name ="title" data-id="title" type ="text" label="Title" value={title} onchange={contactChangeVal}></lightning-input>
+        <lightning-input name ="FirstName" data-id="Fname" type ="text" label="First Name" value={firstName} onchange={contactChangeVal} required="true"></lightning-input> 
+        <lightning-input name ="LastName" data-id="Lname" type ="text" label="Last Name" value={lastName} onchange={contactChangeVal} required="true"></lightning-input>
+        <lightning-input name ="Phone" data-id="Phone" type ="Phone" label="Phone" value={phoneNo} onchange={contactChangeVal}></lightning-input>
+        <lightning-input name ="Email" data-id="Email" type ="Email" label="Email" value={emailId} onchange={contactChangeVal}></lightning-input>
+        <lightning-input name ="Department" data-id="Dept" type ="text" label="Department" value={department} onchange={contactChangeVal}></lightning-input>
+        <lightning-input name ="Birthdate" data-id="Birth" type ="date" label="Birthdate" value={birthdate} onchange={contactChangeVal}></lightning-input>
+        <br>
+                                   
+                    <Strong> <lightning-button type="submit"
+                        name="submit"
+                        label="Create Contact"
+                        onclick={submitForm}>
+        </lightning-button></Strong>
+    </div>
+</lightning-card>
+</div>
+</template>

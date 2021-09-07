@@ -7,12 +7,12 @@ import getContacts from "@salesforce/apex/ContactController.getContacts";
 
 const COLUMNS = [
   {
-    label: "First Name",
+    label: "FirstName",
     fieldName: FIRST_NAME_FIELD.fieldApiName,
     type: "text"
   },
   {
-    label: "Last Name",
+    label: "LastName",
     fieldName: LAST_NAME_FIELD.fieldApiName,
     type: "text"
   },

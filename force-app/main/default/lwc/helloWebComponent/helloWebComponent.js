@@ -3,9 +3,9 @@ export default class HelloWebComponent extends LightningElement {
 greeting = 'Trailblazer';
 currentDate = new Date().toDateString();
 get capitalizedGreeting() {
-return `Hello ${this.greeting.toUpperCase()}!`;
+	return `Hello ${this.greeting.toUpperCase()}!`;
 }
 handleGreetingChange(event) {
-    this.greeting = event.target.value;
+	this.greeting = event.target.value;
 }
 }

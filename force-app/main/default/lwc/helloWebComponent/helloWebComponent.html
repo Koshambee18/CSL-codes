@@ -1,13 +1,12 @@
 <template>
 	<lightning-card title="Lightning Web Component" icon-name="custom:custom14">
-        <lightning-input
+		<div class="slds-var-m-around_medium">
+			<h2>Hello World!</h2>
+			<lightning-input
 label="Name"
 value={greeting}
 onchange={handleGreetingChange}
 ></lightning-input>
-	
-		<div class="slds-var-m-around_medium">
-			Today is date as {currentDate}
 		</div>
-    </lightning-card>
+	</lightning-card>
 </template>

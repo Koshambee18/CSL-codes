@@ -1,4 +1,3 @@
-
 // import as 
 // import getAllBears from '@salesforce/apex/BearController.getAllBears';
 

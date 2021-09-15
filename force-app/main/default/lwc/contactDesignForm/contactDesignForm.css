@@ -1,0 +1,23 @@
+.slds-modal__footer{
+    flex-shrink: 40;
+}
+.slds-page-header.flexipageHeader { 
+    display: none;
+}
+.spanerror{
+    color: rgb(219, 52, 52);
+}
+
+.genericNotification{
+    background-color: rgb(219, 52, 52);
+    font-weight: var(--lwc-fontWeightLight,300);
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+    padding: var(--lwc-spacingMedium,1rem);
+    color: white;
+    font-size: 1rem;
+    line-height: var(--lwc-lineHeightHeading,1.25);
+
+}
+.pageLevelErrors{
+    margin-bottom: var(--lwc-spacingMedium,1rem);
+}

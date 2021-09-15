@@ -1,0 +1,36 @@
+<template>
+<header class="slds-modal__header">
+<h2 class="slds-modal__title">New Contact</h2></header>
+<template if:true={showError}>
+    <div class="pageLevelErrors">
+    <div class="genericNotification" data-aura-rendered-by="1918:0">
+        <span class="genericError uiOutputText" data-aura-rendered-by="1921:0" data-aura-class="uiOutputText">Review the errors on this page.</span>
+        </div>
+  <div class="spanerror" style = "margin-left: 18px;margin-top: 6px;"> These required fields must be completed: Last Name</div> <hr>
+    </div>
+</template>
+<div class="c-container" style="margin-top:-0.7rem;">  
+<lightning-layout  vertical-align="center" style="margin-right: 36px; margin-left: 36px;" >
+<lightning-layout-item flexibility="auto" padding="around-small">
+<lightning-input name ="FirstName" data-id="Fname" type ="text" label="First Name" value={firstName} onchange={contactChangeVal}></lightning-input> 
+<lightning-input name ="LastName" data-id="Lname" type ="text" label="Last Name" value={lastName} onchange={contactChangeVal} required="true"></lightning-input>
+<lightning-input name ="Phone" data-id="Phone" type ="Phone" label="Phone" value={phoneNo} onchange={contactChangeVal}></lightning-input>
+<lightning-input name ="Email" data-id="Email" type ="Email" label="Email" value={emailId} onchange={contactChangeVal}></lightning-input>
+<lightning-record-edit-form object-api-name="Contact" id="createContactForm" >
+<lightning-input-field field-name="AccountId" label="Account Name" onchange={handleAccountSelection} value={accountID}> </lightning-input-field>
+</lightning-record-edit-form>
+<lightning-input name ="Department" data-id="Dept" type ="text" label="Department" value={department} onchange={contactChangeVal}></lightning-input>
+<lightning-input name ="Birthdate" data-id="Birth" type ="date" label="Birthdate" value={birthdate} onchange={contactChangeVal}></lightning-input>
+<br>
+                            
+
+</lightning-layout-item>
+</lightning-layout>
+
+</div>
+<footer class="slds-modal__footer">
+    <button class="slds-button slds-button_brand" onclick={closeModal} title="Cancel">Cancel</button>
+    <button class="slds-button slds-button_brand" onclick={submitForm} title="save">Save</button>
+</footer>
+          
+</template>

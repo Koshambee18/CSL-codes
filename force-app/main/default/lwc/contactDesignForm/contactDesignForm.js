@@ -11,7 +11,8 @@ export default class ContactDesignForm extends NavigationMixin(LightningElement)
     title='';
     birthdate='';
     selectedAccount;
-   
+    fields = ["Name","Type","Phone"];
+    displayFields = 'Name, Type, Phone';
     @track isModalOpen = false;
     @track showError = false;
     @track accountID =window.location.href.match(/[a-z0-9]\w{4}0\w{12}|[a-z0-9]\w{4}0\w{9}/g)[0];
@@ -95,6 +96,9 @@ _showValidationError(event){
     this.showError = true;
 }
 
+/**handleLookup(event){
+    console.log( JSON.stringify ( event.detail) )
+}**/
   showToast(event) {
     const evt = new ShowToastEvent({
         title: 'Success',

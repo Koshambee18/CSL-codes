@@ -1,0 +1,24 @@
+<template>
+    <header class="slds-modal__header">
+        <h2 class="slds-modal__title">Cowin Availability Details</h2></header>
+        <div class="c-container" style="margin-top:-0.7rem;">  
+            <lightning-layout  vertical-align="center" style="margin-right: 36px; margin-left: 36px;" >
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-input name ="Pincode" data-id="pin" type ="number" label="Enter Pincode of the city" value={pincode} onchange={handlecowin} required="true"></lightning-input> 
+                <lightning-input name ="Date" data-id="dt" type ="date" label="Enter the date of availability" value={date} onchange={handlecowin} required="true"></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+        </div>
+        <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_brand" onclick={submitForm} title="save">Serch</button>
+        </footer>
+        <br/>
+        <h1>COWIN Details</h1>
+       <lightning-datatable
+            data={cowinData}
+            columns={columns}
+            key-field="centerid"
+            >
+    </lightning-datatable>
+</template>

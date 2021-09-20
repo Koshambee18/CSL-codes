@@ -16,13 +16,24 @@
 <lightning-input name ="LastName" data-id="Lname" type ="text" label="Last Name" value={lastName} onchange={contactChangeVal} required="true"></lightning-input>
 <lightning-input name ="Phone" data-id="Phone" type ="Phone" label="Phone" value={phoneNo} onchange={contactChangeVal}></lightning-input>
 <lightning-input name ="Email" data-id="Email" type ="Email" label="Email" value={emailId} onchange={contactChangeVal}></lightning-input>
-<lightning-record-edit-form object-api-name="Contact" id="createContactForm" >
+<!--<lightning-record-edit-form object-api-name="Contact" id="createContactForm" >
 <lightning-input-field field-name="AccountId" label="Account Name" onchange={handleAccountSelection} value={accountID}> </lightning-input-field>
-</lightning-record-edit-form>
+</lightning-record-edit-form>-->
+<p class="slds-p-horizontal_small" style="margin-right: 36px; margin-left: 36px;">
+    <c-search-component
+        obj-name="Account"
+        icon-name="standard:account"
+        label-name="Account Name"
+        placeholder="Search" 
+        fields={fields}
+        display-fields={displayFields}
+        onlookup={handleLookup} >
+    </c-search-component>
+</p>
 <lightning-input name ="Department" data-id="Dept" type ="text" label="Department" value={department} onchange={contactChangeVal}></lightning-input>
 <lightning-input name ="Birthdate" data-id="Birth" type ="date" label="Birthdate" value={birthdate} onchange={contactChangeVal}></lightning-input>
 <br>
-                            
+                         
 
 </lightning-layout-item>
 </lightning-layout>

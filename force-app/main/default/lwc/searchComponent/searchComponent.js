@@ -7,15 +7,15 @@ export default class SearchComponent extends LightningElement {
 
     @api valueId;
     @api valueName;
-    @api objName = 'Account';
-    @api iconName = 'standard:account';
+    @api objName = 'Contact';
+    @api iconName = 'standard:contact';
     @api labelName;
     @api readOnly = false;
     @api currentRecordId;
     @api placeholder = 'Search';
     @api createRecord;
     @api fields = ['Name'];
-    @api displayFields = 'Name, Rating, AccountNumber';
+    @api displayFields = 'Name, Email, phone';
 
     @track error;
 

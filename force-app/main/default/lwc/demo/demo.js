@@ -1,7 +1,7 @@
 import { LightningElement } from 'lwc';
 
 export default class Demo extends LightningElement {
-    fields = ["Name","Email","Phone"];
+    fields = ["Name"];
     displayFields = 'Name, Email, Phone'
 
     handleLookup(event){

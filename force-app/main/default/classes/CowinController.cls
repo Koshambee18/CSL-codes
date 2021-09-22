@@ -1,17 +1,24 @@
-public with sharing class CowinController {
+public class CowinController {
+    
 
+        //Global variables 
+        public static Integer latitude,longitude,available_capacity_dose2,fee,min_age_limit,available_capacity_dose1,available_capacity;
+        public static String  center_id,name,address,state_name,district_name,block_name,fee_type,vaccine,slots;
+        public static Boolean allow_all_age;
+        public static List<Cowin_Availability__c> cowinList = new List<Cowin_Availability__c>(); 
+        public static List<CowinData> cowinDataList = new List<CowinData>();
+        public static List<Object> cowinDetails = new List<Object>();
+
+       
+
+    
     @AuraEnabled
-    public static CowinData getDetails(Integer pincode,date cowinDate) {
+    public static List<CowinData> getDetails(Integer pincode,date cowinDate) {
         
-        //Variables to set 
-        Integer latitude,longitude,available_capacity_dose2,fee,min_age_limit,available_capacity_dose1,available_capacity;
-        String  center_id,name,address,state_name,district_name,block_name,fee_type,vaccine,slots;
-        Boolean allow_all_age;
-        List<Cowin_Availability__c> cowinList = new List<Cowin_Availability__c>(); 
         String codate = String.valueOf(cowinDate.day())+'-'+String.valueOf(cowinDate.month())+'-'+String.valueOf(cowinDate.year());
-        CowinData cowData = new CowinData();
-        
-        
+
+         
+
         HttpRequest req = new HttpRequest();
         HttpResponse res = new HttpResponse();
         Http http = new Http();
@@ -27,10 +34,18 @@ public with sharing class CowinController {
             res = http.send(req);
             system.debug(res.getStatusCode());
             if (res.getStatusCode() == 200) {
+                System.debug('200'+res.getBody());
+                
                 Map<String, Object> results = (Map<String,Object>)JSON.deserializeUntyped(res.getBody());
-                List<Object> cowinDetails = (List<Object>)results.get('sessions');
+                cowinDetails = (List<Object>)results.get('sessions');
+                
+                
                 for(Object fld : cowinDetails){    
+                    CowinData cowData = new CowinData();
+
                     Map<String,Object> data = (Map<String,Object>)fld;
+                    System.debug('CenterID');
+                    System.debug(String.valueOf(data.get('center_id')));
                     center_id = String.valueOf(data.get('center_id'));
                     latitude = Integer.valueOf(data.get('lat'));
                     longitude = Integer.valueOf(data.get('long'));
@@ -48,13 +63,9 @@ public with sharing class CowinController {
                     allow_all_age = boolean.valueOf(data.get('allow_all_age'));
                     available_capacity = Integer.valueOf(data.get('available_capacity'));
                     available_capacity_dose1 = Integer.valueOf(data.get('available_capacity'));
-                    
-                    
-                    
-                }
-                
-                
-                cowData.centerid =center_id;
+
+
+                    cowData.centerid =center_id;
                 cowData.Name = Name;
                 cowData.BlockName = block_name;
                 cowData.DistrictName = district_name;
@@ -66,58 +77,20 @@ public with sharing class CowinController {
                 cowData.AvailableCapacityDose2 = available_capacity_dose2;
                 cowData.longitude = longitude; 
                 cowData.latitude = latitude;
+                cowData.Slots = slots;
+                cowData.cowinDetailsList = cowinDetails;
+
+                 cowinDataList.add(cowData);
+                    
+                }
                 
                 
                 
+
                 
-                
-                
-                
-                
-                
-                Cowin_Availability__c cowin = new Cowin_Availability__c();
-                cowin.Address__c = address;
-                cowin.State__c = state_name;
-                cowin.Vaccine_Name__c = vaccine;
-                cowin.Available_Capacity__c = available_capacity;
-                cowin.Block_Name__c = block_name;
-                cowin.Slots__c = slots;
-                cowin.District__c = district_name;
-                cowin.Fee_Type__c = fee_type;
-                cowin.Available_Dose_2__c = available_capacity_dose2;
-                cowin.Fee__c = fee;
-                cowin.Allow_All_Age__c = true;
-                cowin.Available_Dose_1__c = available_capacity_dose1;
-                cowin.Center_Name__c = name;
-                cowin.Center_Id_External_Id__c = center_id;
-                cowin.Minimum_Age_Limit__c = min_age_limit;
-                cowin.Start_Time__c = datetime.now();
-                cowin.End_Time__c = datetime.now();
-                cowin.Pincode__c = String.valueOf(pincode);
-                cowin.Date__c = cowinDate;
-                
-                insert cowin;
-                System.debug(center_id);
-                System.debug('Success!');
-                System.debug('results'+results);
-                System.debug('cowinDetails'+cowinDetails);
-                system.debug(res.getBody());
-                System.debug(center_id);
-                System.debug(available_capacity_dose2);
-                System.debug(address);
-                System.debug(state_name);
-                System.debug(block_name);
-                System.debug(fee_type);
-                System.debug(vaccine);
-                System.debug(slots);
-                System.debug(available_capacity);
-                System.debug(available_capacity_dose1);
-                System.debug(allow_all_age);
-                System.debug(vaccine);
-                System.debug(name);
-                System.debug(district_name);
-                System.debug(min_age_limit);
-                System.debug(fee);
+               
+
+       
             } else {
                 System.debug('HTTP error: ' + res.getStatusCode());
             }
@@ -126,8 +99,44 @@ public with sharing class CowinController {
             System.debug('Callout erro0');
             
         }
-        
-        return cowData;
+
+        return cowinDataList;
+    }
+
+
+    @AuraEnabled
+    public static void insertCowinDetails(Integer pincode,date cowinDate,List<Object> cowinAvailablityList) {
+
+        for(Object fld : cowinAvailablityList){    
+                    
+                    Map<Object,Object> data = (Map<Object,Object>)fld;
+                    Cowin_Availability__c cowin = new Cowin_Availability__c();
+                    cowin.Address__c = String.valueOf(data.get('address'));
+                    cowin.State__c = String.valueOf(data.get('state_name'));
+                    cowin.Vaccine_Name__c = String.valueOf(data.get('vaccine'));
+                    cowin.Available_Capacity__c = Integer.valueOf(data.get('available_capacity'));
+                    cowin.Block_Name__c = String.valueOf(data.get('block_name'));
+                    cowin.Slots__c = String.valueOf(data.get('slots'));
+                    cowin.District__c = String.valueOf(data.get('district_name'));
+                    cowin.Fee_Type__c = String.valueOf(data.get('fee_type'));
+                    cowin.Available_Dose_2__c = Integer.valueOf(data.get('available_capacity_dose2'));
+                    cowin.Fee__c = Integer.valueOf(data.get('fee'));
+                    cowin.Allow_All_Age__c = boolean.valueOf(data.get('allow_all_age'));
+                    cowin.Available_Dose_1__c = Integer.valueOf(data.get('available_capacity'));
+                    cowin.Center_Name__c = String.valueOf(data.get('name'));
+                    cowin.Center_Id_External_Id__c = String.valueOf(data.get('center_id'));
+                    cowin.Minimum_Age_Limit__c = Integer.valueOf(data.get('min_age_limit'));
+                    cowin.Start_Time__c = datetime.now();
+                    cowin.End_Time__c = datetime.now();
+                    cowin.Pincode__c = String.valueOf(pincode);
+                    cowin.Date__c = cowinDate;
+                    
+                
+                	cowinList.add(cowin);
+                
+                }       
+                
+                insert cowinList;
     }
     
     public class CowinData{
@@ -156,8 +165,12 @@ public with sharing class CowinController {
         public Integer AvailableCapacity {get; set;}
         @AuraEnabled
         public Integer AvailableCapacityDose1 {get; set;}
-        
+        @AuraEnabled
+        public String Slots {get; set;}
+        @AuraEnabled
+        public List<Object> cowinDetailsList {get; set;}
+          
     }
-
+    
     
 }

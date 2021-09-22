@@ -1,4 +1,13 @@
-.myColor.THIS  {
-    background: cornsilk;
+div {
+    background: linear-gradient(to right, #ffffff 5%, #99ffcc 92%);
+    font-style: italic;
+    font-size: small;}
 
-}
+    .grad{
+background: linear-gradient(to right, #ffffff 5%, #99ffcc 92%);
+    }
+    .slds-modal__footer{
+        background: linear-gradient(to right, #ffffff 5%, #99ffcc 92%);
+
+    }
+    .slds-modal__header{ background-repeat:no-repeat; height: 200px; background-image: url("https://www.centerwatch.com/ext/resources/images/editorial/VaccinewithNeedle-360x240.png");}

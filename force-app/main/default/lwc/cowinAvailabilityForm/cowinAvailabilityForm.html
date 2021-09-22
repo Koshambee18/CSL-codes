@@ -1,38 +1,44 @@
-<template><div class="slds-page-header">
-    
-          <div class="slds-media__figure">
-    <header class="slds-modal__header">
-        <strong><h2 class="slds-modal__title">Cowin Availability Details</h2></strong><br>
-         
-         <button class="slds-button slds-button_brand" onclick={insertCowinData} title="save">Sync To Salesforce</button>
-        </header>
-        
-        <div class="c-container" style="margin-top:-0.7rem;">  
-            <lightning-layout  vertical-align="center" style="margin-right: 36px; margin-left: 36px;" >
-            <lightning-layout-item flexibility="auto" padding="around-small">
-                <strong><lightning-input name ="Pincode" data-id="pin" type ="number" label="Enter Pincode of the city" value={pincode} onchange={handlecowin} required="true"></lightning-input></strong> 
-                <strong><lightning-input name ="Date" data-id="dt" type ="date" label="Enter the date of availability" value={date} onchange={handlecowin} required="true"></lightning-input></strong>
-            </lightning-layout-item>
-        </lightning-layout>
-        
-        </div>
-        <footer class="slds-modal__footer">
+<template>
+   <div class="slds-page-header" style ="background-color: aliceblue;">
+      <div class="slds-media__figure">
+         <div ><p style ="background-color: white;" >KEEP SAFE DISTANCE FOR COVID RESISTANCE; <br>CLEAN HANDS AND FACE MASK CORONA WILL LEAVE BEFORE YOU ASK</p></div>
+         <header class="slds-modal__header">
+            <strong>
+               <h2 class="slds-modal__title" style="margin-top: 40px;font-size: medium;">Cowin Availability Details</h2>
+               
+            </strong>
+            <br>
+            <button class="slds-button slds-button_brand" onclick={insertCowinData} title="save">Sync To Salesforce</button>
+         </header>
+         <div class="c-container" style="margin-top:-0.7rem;">
+            <lightning-layout  vertical-align="center"  style="margin-right: 36px; margin-left: 36px; " >
+               <lightning-layout-item flexibility="auto" padding="around-small">
+                  <strong>
+                     <lightning-input name ="Pincode" data-id="pin" type ="number" label="Enter Pincode of the city" value={pincode} onchange={handlecowin} required="true"></lightning-input>
+                  </strong>
+                  <strong>
+                     <lightning-input name ="Date" data-id="dt" type ="date" label="Enter the date of availability" value={date} onchange={handlecowin} required="true"></lightning-input>
+                  </strong>
+               </lightning-layout-item>
+            </lightning-layout>
+         </div>
+         <div>
+         <footer class="slds-modal__footer">
             <button class="slds-button slds-button_brand" onclick={closeModal} title="Cancel">Refresh</button>
             <button class="slds-button slds-button_brand" onclick={submitForm} title="save">Search</button>
-        </footer>
-        <br/>
-        <lightning-card title={cardTitle}><div><strong>{size}</strong></div>
-        
-       <lightning-datatable
-            data={cowinData}
-            columns={columns}
-            key-field="centerid"
-            >
-    </lightning-datatable>
-        </lightning-card>
-    </div>
-        
-    </div>
-    
-    
+         </footer>
+         <br/>
+         </div>
+         <template if:true={available}>
+            <lightning-card title={cardTitle}>
+               <lightning-datatable
+                  data={cowinData}
+                  columns={columns}
+                  key-field="centerid"
+                  >
+               </lightning-datatable>
+            </lightning-card>
+         </template>
+      </div>
+   </div>
 </template>

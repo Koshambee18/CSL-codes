@@ -24,11 +24,11 @@
 <div class="slds-page-header__col-details">
 <ul class="slds-page-header__detail-row">
 <li class="slds-page-header__detail-block">
-<div class="slds-text-title slds-truncate" title="Field 1">Field 1</div>
+<div class="slds-text-title slds-truncate" title="Field 1">Type</div>
 <div class="slds-truncate" title="Description that demonstrates truncation with a long text field.">Description that demonstrates truncation with a long text field.</div>
 </li>
 <li class="slds-page-header__detail-block">
-<div class="slds-text-title slds-truncate" title="Field 2 (3)">Field 2 (3)
+<div class="slds-text-title slds-truncate" title="Field 2 (3)">Phone
 <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
 <button class="slds-button slds-button_icon slds-button_icon" aria-haspopup="true" title="More Actions">
 <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
@@ -41,17 +41,43 @@
 <div class="slds-truncate" title="Multiple Values">Multiple Values</div>
 </li>
 <li class="slds-page-header__detail-block">
-<div class="slds-text-title slds-truncate" title="Field 3">Field 3</div>
+<div class="slds-text-title slds-truncate" title="Field 3">Website</div>
 <div class="slds-truncate" title="Hyperlink">
 <a href="#">Hyperlink</a>
 </div>
 </li>
+
 <li class="slds-page-header__detail-block">
-<div class="slds-text-title slds-truncate" title="Field 4">Field 4</div>
+<div class="slds-text-title slds-truncate" title="Field 4">Account Owner</div>
+<div class="slds-truncate" title="Description (2-line truncation—must use JS to truncate).">Description (2-line truncati...</div>
+</li>
+<li class="slds-page-header__detail-block">
+<div class="slds-text-title slds-truncate" title="Field 5">Account Site</div>
+<div class="slds-truncate" title="Description (2-line truncation—must use JS to truncate).">Description (2-line truncati...</div>
+</li>
+
+<li class="slds-page-header__detail-block">
+<div class="slds-text-title slds-truncate" title="Field 6">Industry</div>
 <div class="slds-truncate" title="Description (2-line truncation—must use JS to truncate).">Description (2-line truncati...</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
+  <template if:true={account.data}> 
+            <div class="slds-p-around_x-small">
+            <lightning-record-view-form record-id={recordId}
+                                        object-api-name={objectApiName}>
+                <div class="slds-box">
+                    <lightning-output-field field-name="Name">
+                    </lightning-output-field>
+                    <lightning-output-field field-name="Industry">
+                    </lightning-output-field>
+                    <lightning-output-field field-name="Phone">
+                    </lightning-output-field>
+                </div>
+            </lightning-record-view-form>
+        </div>
+        </template>       
+   
 </template>

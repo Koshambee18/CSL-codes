@@ -1,0 +1,7 @@
+.slds-page-header{
+    background-image: linear-gradient(to left, #17ffe2, #00f4f2, #00e7fc, #00d9ff, #34cbff, #5fc8ff, #7cc6ff, #94c3fd, #a8cdfb, #bcd8f9, #d0e2f7, #e4ecf5);
+}
+div {
+    background: linear-gradient(to right, #ffffff 5%, #99ffcc 92%);
+    font-style: italic;
+    font-size: small;}

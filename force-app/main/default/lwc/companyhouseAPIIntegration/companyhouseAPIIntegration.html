@@ -1,0 +1,73 @@
+<template>
+ <div class="slds-page-header" style ="background-image: linear-gradient(to left, #17ffe2, #00f8ef, #00eff9, #2ee6fe, #51ddff, #77dcff, #94daff, #acd9ff, #c9e1ff, #e0e9ff, #f2f3ff, #ffffff);">
+       <lightning-spinner if:true={isLoading} variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+     <header class="slds-modal__header">
+            
+               <h2 class="slds-modal__title" style="margin-top: 15px;font-size: medium;font-family: cursive;">Search For Any Company Details</h2>
+               
+            </header>
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+          <div class="slds-size_11-of-12">
+                  <lightning-input type="text" variant="standard" name="comp"  label="Enter any Company First name to search" placeholder="type here..."  value={cmpName} onchange={handleSearchData} style="width: 995px;" required="true"></lightning-input>  <br>
+              </div>
+            <div class="slds-size_1-of-12">
+                 <lightning-input label="Start Index" type="number"  onchange={handleSearchData}></lightning-input>
+            </div>
+            </div>
+
+          <!--<lightning-button-icon icon-name="utility:search" onclick={handleSearchData} alternative-text="Search" style= "float:right;margin-top:-3.2rem;" title="Search"></lightning-button-icon>-->
+
+            <!--<button class="slds-button slds-button_brand" onclick={handleSearchData} title="save">Search</button>-->
+            <template if:true={available}>
+              <template for:each= {companyDetails} for:item= "cdetails" >
+                  <p key={cdetails.companyCode}>
+            <a data-cdetails={cdetails.companyCode} onclick={onLinkClick}>  {cdetails.companyName}</a><br>
+               {cdetails.companyCode}<br>
+               {cdetails.companyStatus}<br>
+               {cdetails.addressSnippet}
+               {cdetails.totalResults}
+            
+                  </p>
+                  </template>
+            </template>
+<br>
+            <!--<div slot="actions">
+            <lightning-button
+            variant="neutral"
+            title="first"
+            label="First"
+            class="slds-float_left"
+            icon-name="utility:chevronleft"
+            icon-position="left"
+            onclick={handleClick}></lightning-button>
+        &nbsp;
+            <lightning-button
+            variant="neutral"
+            title="previous"
+            class="slds-float_left"
+            label="Previous"
+            icon-name="utility:chevronleft"
+            icon-position="left"
+            onclick={handleClick}></lightning-button>
+            <lightning-button
+            variant="neutral"
+            title="next"
+            class="slds-float_right"
+            label="Next"
+            icon-name="utility:chevronright"
+            icon-position="right"
+            onclick={handleClick}></lightning-button>
+            &nbsp;
+            <lightning-button
+            variant="neutral"
+            title="last"
+            class="slds-float_right"
+            label="Last"
+            icon-name="utility:chevronright"
+            icon-position="right"
+            onclick={handleClick}></lightning-button>
+        </div>-->
+            
+            
+ </div>
+</template>

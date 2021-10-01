@@ -4,7 +4,6 @@ import {
     wire
 } from 'lwc';
 import getDetails from '@salesforce/apex/CowinController.getDetails';
-import insertCowinDetails from '@salesforce/apex/CowinController.insertCowinDetails';
 import {
     NavigationMixin
 } from 'lightning/navigation';
@@ -88,7 +87,8 @@ export default class CowinAvailabilityForm extends LightningElement {
 
         getDetails({
                 pincode: this.pincode,
-                cowinDate: this.cowinDate
+                cowinDate: this.cowinDate,
+                isInsert: false
             })
             .then((result) => {
                 console.log('COWINDATA');
@@ -121,10 +121,10 @@ export default class CowinAvailabilityForm extends LightningElement {
 
     //To insert cowin availabilty records
     insertCowinData(event) {
-        insertCowinDetails({
+        getDetails({
                 pincode: this.pincode,
                 cowinDate: this.cowinDate,
-                cowinAvailablityList: this.cowinDetails
+                isInsert: true
             })
 
             .then((result) => {

@@ -1,0 +1,26 @@
+<template>
+        <div class="slds-page-header" style =" height: 500px; background-image: url('https://inspirationfeed.com/wp-content/uploads/2021/01/laura-davidson-QBAH4IldaZY-unsplash.jpg');background-repeat: no-repeat;background-size: contain;background-position: center center;">
+     <header class="slds-modal__header" style="background: rgb(10,245,222);background: radial-gradient(circle, rgba(10,245,222,1) 41%, rgba(6,123,115,0.6483975528331285) 100%);">
+            
+               <h2 class="slds-modal__title" style="margin-top: 10px;font-size: medium;font-family: cursive;">Selected Company Details</h2>
+               
+            </header><br>
+                   <div style ="font-size: 20px;">
+
+<template for:each= {fullCompanyDetails} for:item= "cfulldetails" >
+        <p key={cfulldetails.companyCode} >
+        Company Name : {cfulldetails.company_name}<br>
+         Registered office address<br>
+        {cfulldetails.registeredAddress1}<br>
+        {cfulldetails.registeredAddress2}
+         {cfulldetails.locality}<br>
+         {cfulldetails.country}<br>
+         {cfulldetails.postalCode}<br>
+
+         Company Status : {cfulldetails.company_status}
+                
+         </p>
+</template>
+</div>
+        </div>
+</template>

@@ -11,13 +11,6 @@ export default class CompanyhouseAPIIntegration extends NavigationMixin(Lightnin
     @track start_index = 0;
     companyDetails;
    // @track items_per_page = this.items_per_page ;
-    @track start_index =this.start_index;   
-    @track page_number =this.page_number;
-    
-    @track isLoading = false;
-    @track paginationRange = [];
-
-    @track total_results = this.total_results;
     
     
     

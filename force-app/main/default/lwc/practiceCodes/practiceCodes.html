@@ -1,0 +1,17 @@
+<template>
+<div class="slds-var-m-around_medium ">
+<lightning-card  variant="Narrow"  title="Calculate the numbers " >
+    <lightning-input class="slds-var-m-around_medium " type="number" name="input1" label="Enter first number" placeholder="type here..." value ={Firstnum}  onchange={handleInput1}></lightning-input>
+    <lightning-input class="slds-var-m-around_medium " type="number" name="input2" label="Enter second number" placeholder="type here..." value ={secondnum} onchange={handleInput2}></lightning-input>
+<!-- Success variant: Identifies a successful action -->
+<lightning-button variant="success" label="Success Add" title="Successful action" onclick={handleClickadd} class="slds-m-left_x-small"></lightning-button>
+<lightning-button variant="success" label="Success Sub" title="Successful action" onclick={handleClicksub} class="slds-m-left_x-small"></lightning-button>
+<lightning-button variant="success" label="Success Multiply" title="Successful action" onclick={handleClickmultiply} class="slds-m-left_x-small"></lightning-button>
+<lightning-button variant="success" label="Success Divide" title="Successful action" onclick={handleClickdivide} class="slds-m-left_x-small"></lightning-button>
+<br>
+<div class="slds-var-m-around_medium ">
+{ShowResult}
+</div>
+</lightning-card>
+</div>
+</template>

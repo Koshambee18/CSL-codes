@@ -121,6 +121,8 @@ public class CowinController {
             
         }catch(System.CalloutException e) {
             	System.debug('Callout erro0');
+            System.debug('error'+e.getLineNumber());
+            System.debug('errormsf'+e.getMessage());
             
         }
         

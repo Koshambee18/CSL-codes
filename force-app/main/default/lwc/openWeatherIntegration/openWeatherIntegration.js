@@ -18,18 +18,34 @@ connectedCallback() {
 
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+   
     
-    
-    if(today.getHours()>20 && today.getHours()<23){
-        this.picUrl = 'https://wallpapercave.com/wp/wp2077495.jpg';
-    }else if(today.getHours()>23 && today.getHours()<5){
-        this.picUrl= 'https://biztreat.com/wp-content/uploads/2017/06/Sunrise-7-1024x683.jpg';
+    if(today.getHours()>=6 && today.getHours()<=7){
+        this.picUrl = 'https://wallpapercave.com/wp/wp6023247.jpg';
     }
-    else if(today.getHours()>16 && today.getHours()<20){
-        this.picUrl = 'https://wallpapercave.com/wp/wp9123825.jpg';
+    else if(today.getHours()>=8 && today.getHours()<=9){
+        this.picUrl= 'https://wallpapercave.com/wp/wp8644888.jpg';
+    }
+     else if(today.getHours()>=10 && today.getHours()<=11 ){
+        this.picUrl= 'https://wallpapercave.com/wp/wp7903070.jpg';
+    }
+     else if(today.getHours()>=11 && today.getHours()<=12){
+        this.picUrl= 'https://wallpapercave.com/wp/wp4077312.jpg';
+    }
+     else if(today.getHours()>=12 && today.getHours()<=14){ 
+        this.picUrl= 'https://wallpapercave.com/wp/wp8436142.jpg';
+    }
+    else if(today.getHours()>=14 && today.getHours()<=16){
+        this.picUrl = 'https://wallpapercave.com/wp/wp5287555.jpg';
+    }
+    else if(today.getHours()>=16 && today.getHours()<=18){
+        this.picUrl = 'https://wallpapercave.com/wp/wp5164663.jpg';
+    }
+    else if(today.getHours()>=18 && today.getHours()<=20){
+        this.picUrl = 'https://wallpapercave.com/wp/wp5164656.jpg';
     }
     else{
-        this.picUrl= 'https://wallpapercave.com/wp/wp3057844.jpg';
+        this.picUrl= 'https://wallpapercave.com/wp/wp4881911.jpg';
     }
 }
 

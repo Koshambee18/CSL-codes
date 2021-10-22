@@ -1,0 +1,26 @@
+<apex:page controller="OneDrivePop" showHeader="false" sidebar="false">
+    
+    <apex:outputText style="font-size: large;font-family: cursive;" value="Succesful Login"/>
+    <script type = "text/javascript">
+    window.onload=function()       
+    {   
+        var url = window.location.href;
+        var token = new URL(url).hash.split('&').filter(function(el) { if(el.match('access_token') !== null) return true; })[0].split('=')[1];
+        var decodedToken = decodeURIComponent(token);
+        //getAccessToken(decodedToken);
+
+        // console.log(decodedToken);
+        
+        setTimeout(function () { window.close();}, 4000); 
+        
+    }
+    </script>
+    
+        <!--<apex:form >-->
+        <!-- this action function can be called from javascript -->
+        <!--<apex:actionFunction name="getAccessToken" action="{!getAccessToken}" rerender="">
+            <apex:param name="token" value="" />
+        </apex:actionFunction>
+    </apex:form>-->
+    
+</apex:page>

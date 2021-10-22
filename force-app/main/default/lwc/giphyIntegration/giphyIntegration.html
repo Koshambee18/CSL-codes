@@ -1,0 +1,28 @@
+<template>
+<lightning-layout multiple-rows>
+            <lightning-layout-item size="12" padding="around-medium">
+                <Strong><div style="font-size: large;font-family: fangsong;font-style: italic;">Entity to search :</div></Strong>
+                <lightning-input type="text" name="EName" onchange={ChangeHandler} placeholder="type here..."></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-medium">
+           
+                    <!--<lightning-button variant="brand" label="Search" onclick={handleClick}></lightning-button>-->
+                    <lightning-button-icon icon-name="utility:search" onclick={handleClick} alternative-text="Search" style= "float:right;margin-top:-4.005rem;" title="Search"></lightning-button-icon>
+             </lightning-layout-item>
+                     <template if:true={available}>
+                      <lightning-layout-item size="12" padding="around-medium"> 
+                          
+                          <template for:each= {GifsDetails} for:item= "gifs" >
+                          
+                  <p key={gifs.urlwc} style="text-align: left;text-decoration: underline; font-size: medium;font-family: cursive;font-style: italic;">
+                      <a href= {gifs.urlwc}>{gifs.urlwc}</a><br>
+                      <a href= {gifs.embadedurlwc}>{gifs.embadedurlwc}</a>
+                      <!-- <img src={gifs.urlwc} key={gifs.urlwc} style="height: 190px;width:100%"/>
+                      <img src={gifs.embadedurlwc} key={gifs.urlwc} style="height: 190px;width:100%"/> -->
+                  </p>   
+                      
+                     </template>
+            </lightning-layout-item>
+                     </template>
+</lightning-layout>
+</template>

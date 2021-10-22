@@ -1,0 +1,40 @@
+<template>
+  <lightning-spinner if:true={isLoading} variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+  <!-- <div style ="background-image: linear-gradient(to right top, #00ffc8, #60ffd2, #89fedc, #abfde4, #c8fcec, #bcf5eb, #b1ede9, #a7e5e8, #6ad4ec, #00c0f7, #00a8ff, #008bff);"> -->
+<lightning-card title="File Manager OneDrive Upload" icon-name="action:upload">
+    <lightning-layout style ="background-image: linear-gradient(to right top, #00ffc8, #60ffd2, #89fedc, #abfde4, #c8fcec, #bcf5eb, #b1ede9, #a7e5e8, #6ad4ec, #00c0f7, #00a8ff, #008bff);font-size: medium;font-family: fangsong;">
+              <lightning-layout-item padding="around-small"><img src="https://cdn.vox-cdn.com/thumbor/xUadDeD-Y0gDKvFAuEjm-P6EHj8=/0x0:2040x1360/920x613/filters:focal(857x517:1183x843):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69155664/DSCF1179.0.0.jpg"></lightning-layout-item><br>
+              <lightning-layout-item padding="around-small"><lightning-button variant="success" label="Connect" icon-name="utility:add"  onclick={handlConnectClick}></lightning-button></lightning-layout-item>
+             <lightning-layout-item style="margin-top: 63px;position: fixed;margin-left: 550px;"><lightning-input type="file" variant="success" name="name" multiple ="true"
+            onchange={handleUploadFinished}></lightning-input><br>
+
+
+  
+             <lightning-button variant="success" label="Upload" style="margin-left: 80px;" onclick={handleUploadClick}></lightning-button></lightning-layout-item><br>
+             <lightning-layout-item padding="around-small"><lightning-button variant="success" label="Logout" style="margin-left: 20px;" onclick={handlelogoutClick} ></lightning-button></lightning-layout-item>
+             <lightning-layout-item padding="around-small"><img src="https://cdn.vox-cdn.com/thumbor/TtfjpfLbJifE_eobaJsarWTQUvY=/0x0:960x540/920x613/filters:focal(404x194:556x346):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/67006267/Microsoft_OneDrive.0.jpg"></lightning-layout-item><br>
+              <!-- <lightning-layout-item padding="around-small"> -->
+              
+              <!-- </lightning-layout-item> -->
+
+            
+         
+    </lightning-layout>
+   
+</lightning-card>
+
+<template if:true={allFiles}>
+<lightning-card title="Uploaded Files">
+   <div style="background-image: linear-gradient(to right top, #00ffc8, #60ffd2, #89fedc, #abfde4, #c8fcec, #bcf5eb, #b1ede9, #a7e5e8, #6ad4ec, #00c0f7, #00a8ff, #008bff);height: 800px;">
+         
+        <lightning-datatable
+        
+                key-field="idWC"
+                data={allFiles}
+                columns={columns}>
+        </lightning-datatable>
+         
+    </div>   
+</lightning-card>
+        </template>
+</template>

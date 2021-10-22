@@ -1,22 +1,23 @@
 <template>
 <lightning-card  title="Open Weather Details" icon-name="custom:custom60"> 
   <lightning-spinner if:true={isLoading} variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
-    <lightning-layout style = "background-image: linear-gradient(315deg, #ffffff 0%, #91a6ff 74%);" multiple-rows>
+    <lightning-layout style = "background-image: linear-gradient(to right top, #00ffc8, #60ffd2, #89fedc, #abfde4, #c8fcec, #bcf5eb, #b1ede9, #a7e5e8, #6ad4ec, #00c0f7, #00a8ff, #008bff);" multiple-rows>
             <lightning-layout-item size="12" padding="around-medium">
                 <Strong><div style="font-size: large;font-family: fangsong;font-style: italic;">Enter City Name to get the Weather Details of :</div></Strong>
                 <lightning-input type="text" name="cityName" onchange={ChangeHandler} placeholder="type here..."></lightning-input>
             </lightning-layout-item>
             <lightning-layout-item size="12" padding="around-medium">
-                
+           
                     <!--<lightning-button variant="brand" label="Search" onclick={handleClick}></lightning-button>-->
                     <lightning-button-icon icon-name="utility:search" onclick={handleClick} alternative-text="Search" style= "float:right;margin-top:-4.005rem;" title="Search"></lightning-button-icon>
             </lightning-layout-item>
+            
             <template if:true={available}>
-                      <lightning-layout-item size="12" padding="around-medium">
+                      <lightning-layout-item size="12" padding="around-medium"> 
           <!--<lightning-layout-item size="12" padding="around-medium" style = "background-image: url('https://www.climate.gov/sites/default/files/morning_mist.jpg');background-repeat: no-repeat;background-size: contain;background-position: right; margin-top: -47px;">-->
-              
+              <strong><div class="clock" style="margin-left:250px;margin-top:-43px;}"><c-digiclock></c-digiclock></div></strong>
               <img src={picUrl} style="float:right;height: 395px;margin-top: -47px;">
-              
+             
                 <template for:each= {weatherDetails} for:item= "cdetails" >
                   <ul key={cdetails.idwc} style="text-align: left;text-decoration: underline; margin-top: -47px; font-size: medium;font-family: cursive;font-style: italic;">
                     <div class="demo-only demo-only--sizing slds-grid slds-wrap">

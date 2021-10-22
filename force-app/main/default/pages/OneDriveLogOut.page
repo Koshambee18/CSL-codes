@@ -1,0 +1,9 @@
+<apex:page >
+    <Center><apex:outputText style="font-size: large;font-family: cursive;" value="Succesful Logout"/></Center>
+    <script type = "text/javascript">
+    window.onload=function()       
+    {     
+        setTimeout(function () { window.close();}, 1000);
+    }
+    </script>
+</apex:page>

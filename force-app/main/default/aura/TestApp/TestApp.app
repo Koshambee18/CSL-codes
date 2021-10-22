@@ -1,3 +1,3 @@
 <aura:application extends="force:slds">
-    <c:demo/>
+    <c:digiclock/>
 </aura:application>

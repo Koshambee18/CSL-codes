@@ -1,0 +1,84 @@
+<template>
+<lightning-card  title="Open Weather Details" icon-name="custom:custom60"> 
+  <lightning-spinner if:true={isLoading} variant="brand" alternative-text="Loading" size="medium"></lightning-spinner>
+    <lightning-layout style = "background-image: linear-gradient(315deg, #ffffff 0%, #91a6ff 74%);" multiple-rows>
+            <lightning-layout-item size="12" padding="around-medium">
+                <Strong><div style="font-size: large;font-family: fangsong;font-style: italic;">Enter City Name to get the Weather Details of :</div></Strong>
+                <lightning-input type="text" name="cityName" onchange={ChangeHandler} placeholder="type here..."></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-medium">
+                
+                    <!--<lightning-button variant="brand" label="Search" onclick={handleClick}></lightning-button>-->
+                    <lightning-button-icon icon-name="utility:search" onclick={handleClick} alternative-text="Search" style= "float:right;margin-top:-4.005rem;" title="Search"></lightning-button-icon>
+            </lightning-layout-item>
+            <template if:true={available}>
+                      <lightning-layout-item size="12" padding="around-medium">
+          <!--<lightning-layout-item size="12" padding="around-medium" style = "background-image: url('https://www.climate.gov/sites/default/files/morning_mist.jpg');background-repeat: no-repeat;background-size: contain;background-position: right; margin-top: -47px;">-->
+              
+              <img src={picUrl} style="float:right;height: 395px;margin-top: -47px;">
+              
+                <template for:each= {weatherDetails} for:item= "cdetails" >
+                  <ul key={cdetails.idwc} style="text-align: left;text-decoration: underline; margin-top: -47px; font-size: medium;font-family: cursive;font-style: italic;">
+                    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">City Name : <lightning-formatted-text value={cdetails.namewc}></lightning-formatted-text></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">ID : <lightning-formatted-number value={cdetails.idwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Base : <lightning-formatted-text value={cdetails.basewc}></lightning-formatted-text></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;"> Degree : <lightning-formatted-number value={cdetails.degwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Feels_like : <lightning-formatted-number value={cdetails.feels_likewc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">Humidity : <lightning-formatted-number value={cdetails.humiditywc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Latitude : <lightning-formatted-number value={cdetails.latwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">Longitude : <lightning-formatted-number value={cdetails.lonwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Pressure : <lightning-formatted-number value={cdetails.pressurewc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">Wind Speed : <lightning-formatted-number value={cdetails.speedwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Sunrise : <lightning-formatted-number value={cdetails.sunrisewc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">Sunset : <lightning-formatted-number value={cdetails.sunsetwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Maximum Tempreture : <lightning-formatted-number value={cdetails.temp_maxwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">Normal Tempreture : <lightning-formatted-number value={cdetails.tempwc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Timezone : <lightning-formatted-number value={cdetails.timezonewc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small" style ="margin-left: -5px;">Visibility : <lightning-formatted-number value={cdetails.visibilitywc}></lightning-formatted-number></div>
+                      </div>
+                      <div class="slds-size_1-of-2">
+                        <div class="slds-text-align_left slds-m-around_x-small">Weather Type : <lightning-formatted-text value={cdetails.descriptionwc}></lightning-formatted-text></div>
+                      </div>
+                    </div>
+              
+                  </ul>
+            
+            </template>
+            </lightning-layout-item>
+            </template>
+            
+    </lightning-layout>
+</lightning-card>
+</template>
